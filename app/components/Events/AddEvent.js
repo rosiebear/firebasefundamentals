@@ -1,10 +1,10 @@
 import React from 'react';
 
-class AddNote extends React.Component {
+class AddEvent extends React.Component {
   handleSubmit(){
-    var newNote = this.note.value;
-    this.note.value = '';
-    this.props.addNote(newNote);
+    var newEvent = this.event.value;
+    this.event.value = '';
+    this.props.addEvent(newEvent);
   }
   setRef(ref){
       this.note = ref;
@@ -13,7 +13,7 @@ class AddNote extends React.Component {
     return (
       <div className="input-group">
         <input type="text" className="form-control"
-           placeholder="Add New Note" ref={(ref) => this.setRef(ref)} />
+           placeholder="Add New Event" ref={(ref) => this.setRef(ref)} />
           <span className="input-group-btn">
               <button className="btn btn-default" type="button"
                   onClick={() => this.handleSubmit()}>
@@ -25,9 +25,9 @@ class AddNote extends React.Component {
   }
 }
 
-AddNote.propTypes = {
-    username: React.PropTypes.string.isRequired,
-    addNote: React.PropTypes.func.isRequired
+AddEvent.propTypes = {
+    user: React.PropTypes.string.isRequired,
+    addEvent: React.PropTypes.func.isRequired
 };
 
-export default AddNote;
+export default AddEvent;
