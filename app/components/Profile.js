@@ -1,7 +1,4 @@
 import React from 'react';
-var createFragment = require('react-addons-create-fragment');
-
-import Events from './Events/Events';
 import Rebase from 're-base';
 
 const base = Rebase.createClass('https://fundatmental.firebaseio.com');
@@ -10,34 +7,25 @@ class Profile extends React.Component {
     constructor(){
         super();
         this.state = {
-            events: []
+            tweets: []
         }
     }
     componentDidMount(){
-        this.ref = base.bindToState('users', {
+        this.userObjectsRef = base.bindToState(`userObjects/tweets/${this.props.params.userID}`, {
             context: this,
             asArray: true,
-            state: 'events'
+            state: 'tweets'
         });
     }
-
     componentWillUnmount(){
-        base.removeBinding(this.ref);
+        base.removeBinding(this.userObjectsRef);
     }
-
     render(){
-        console.log(this.state.events);
+        console.log(this.state.tweets);
+        let { userID } = this.props.params
         return (
-            <div className="row">
-                <div className="col-md-4">
-                    <ul>
-                        {
-                            this.state.events.map((item, index) => {
-                              return <li key={ index }> { item.name } </li>
-                            })
-                        }
-                    </ul>
-                </div>
+            <div>
+                <h1>User: {userID} </h1>
             </div>
         )
     }
