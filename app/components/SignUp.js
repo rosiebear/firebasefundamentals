@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import FontIcon from 'material-ui/lib/font-icon';
 
-const base = Rebase.createClass('https://fundatmental.firebaseio.com');
+const base = Rebase.createClass('https://fundamental.firebaseio.com');
 
 const style = {
     paper: {
@@ -77,6 +77,7 @@ class SignUp extends React.Component {
                     });
                 }
             } else if (authData) {
+                console.log(authData);
                 this.addUser(authData, provider)
             }
         });
@@ -92,13 +93,18 @@ class SignUp extends React.Component {
             asArray: true,
             then(data){
                 if(!data.length){
-                    base.post(`userObjects/schedules/${authData.uid}`, {
-                        data: userData,
+                    base.post(`schedules/${authData.uid}`, {
+                        data: [].concat(
+                            {
+                                name: "first schedule",
+                                url: "schedule url"
+                            }
+                        ),
                         then(e){
                             console.log(e);
                         }
                     });
-                    base.post(`users/${authData.uid}`, {
+                    base.post(`owners/${authData.uid}`, {
                         data: userData,
                         then(e){
                             console.log(e);
@@ -107,8 +113,6 @@ class SignUp extends React.Component {
                 }
             }
         });
-
-
     }
 
     render() {

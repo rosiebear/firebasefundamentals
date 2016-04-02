@@ -1,7 +1,7 @@
 import React from 'react';
 import Rebase from 're-base';
 
-const base = Rebase.createClass('https://fundatmental.firebaseio.com');
+const base = Rebase.createClass('https://fundamental.firebaseio.com');
 
 class Profile extends React.Component {
     constructor(){

@@ -4,7 +4,7 @@ import {grey50} from 'material-ui/lib/styles/colors';
 import AppBar from 'material-ui/lib/app-bar';
 import SelectUser from '../Events/SelectUser';
 
-const base = Rebase.createClass('https://fundatmental.firebaseio.com');
+const base = Rebase.createClass('https://fundamental.firebaseio.com');
 
 class UserDash extends React.Component {
     constructor(){
@@ -15,11 +15,12 @@ class UserDash extends React.Component {
         this.handleChangeUser = this.handleChangeUser.bind(this)
     }
     componentDidMount(){
-        this.usersRef = base.bindToState('users', {
+        this.usersRef = base.bindToState('owners', {
             context: this,
             asArray: true,
             state: 'users'
         });
+
     }
     componentWillUnmount(){
         base.removeBinding(this.usersRef);
@@ -40,6 +41,7 @@ class UserDash extends React.Component {
     }
 
     render(){
+        console.log(this.state.users);
         const styles = this.getStyles();
         return (
             <div>

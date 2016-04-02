@@ -7,7 +7,6 @@ const firebaseSchema = {
 
     "collaborators": {
         "schedule_id_1": {
-            "user_id_1": true,
             "name": "User Name",
             "bio": "blob data"
         }
@@ -21,6 +20,15 @@ const firebaseSchema = {
         },
         "schedule_id_2": {},
         "schedule_id_3": {}
+    },
+
+    "schedules": {
+        "owner_id_1": {
+            "schedule_id_1": {
+                "name": "schedule name",
+                "url": "scheule url"
+            }
+        }
     },
 
 // events are separate from data we may want to iterate quickly
@@ -64,6 +72,4 @@ const firebaseSchema = {
             }
         }
     }
-
-
 }
