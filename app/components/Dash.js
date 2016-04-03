@@ -1,5 +1,6 @@
 import React from 'react';
 import AddSchedule from './Schedule/AddSchedule';
+import Schedule from './Schedule/Schedule';
 import Paper from 'material-ui/lib/paper';
 import AppBar from 'material-ui/lib/app-bar';
 import {black} from 'material-ui/lib/styles/colors';
@@ -45,6 +46,7 @@ class Dash extends React.Component {
         });
     }
     componentWillUnmount(){
+        base.removeBinding(this.ref);
     }
 
     handleAddSchedule(newSchedule){
@@ -64,12 +66,22 @@ class Dash extends React.Component {
             <div style={style.layout}>
                 <AppBar style={style.appBar} title="home" />
                 <Paper style={style.paper} zDepth={1}>
-                    <AddSchedule addSchedule={(newSchedule) => this.handleAddSchedule(newSchedule)}>
-                    </AddSchedule>
+                    <AddSchedule addSchedule={(newSchedule) => this.handleAddSchedule(newSchedule)} />
                 </Paper>
+                {
+                    this.state.schedules.map((schedule, index) => {
+                        return (
+                            <Paper key={index} style={style.paper} zDepth={1}>
+                                <Schedule name={schedule.name} url={schedule.url} key={index}/>
+                            </Paper>
+                        )
+                    })
+                }
             </div>
         )
     }
 }
+
+
 
 export default Dash;

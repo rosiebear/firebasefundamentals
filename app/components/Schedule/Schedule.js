@@ -7,20 +7,22 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 
-const Schedule = () => (
+const Schedule = (props) => (
     <Card>
-        <CardTitle title="Card title" subtitle="Card subtitle" />
+        <CardTitle title={props.name} />
         <CardText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+            {props.url}
         </CardText>
         <CardActions>
-            <FlatButton label="Action1" />
-            <FlatButton label="Action2" />
+            <FlatButton label="Add Client Member" />
+            <FlatButton label="Add Team Member" />
         </CardActions>
     </Card>
 );
+
+Schedule.propTypes = {
+    name: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired
+}
 
 export default Schedule;

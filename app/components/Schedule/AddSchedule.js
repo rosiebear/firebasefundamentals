@@ -70,4 +70,8 @@ class AddSchedule extends React.Component {
     }
 }
 
+AddSchedule.propTypes = {
+    addSchedule: React.PropTypes.func.isRequired
+}
+
 export default AddSchedule;
